@@ -70,7 +70,7 @@ EOF
 }
 
 # Check ImageMagick
-command -v convert >/dev/null 2>&1 || { error >&2 "The ImageMagick is not installed. Please use brew to install it first."; exit -1; }
+command -v magick >/dev/null 2>&1 || { error >&2 "The ImageMagick is not installed. Please use brew to install it first."; exit -1; }
 
 # Check param
 if [ $# != 2 ];then
@@ -83,39 +83,39 @@ fi
 
 info 'Generating iMessage Sticker IconImage...'
 
-convert "$SRC_FILE_SQUARE" -resize 58x58 "$DST_PATH/iphone_29x29_2x.png"
-convert "$SRC_FILE_SQUARE" -resize 87x87 "$DST_PATH/iphone_29x29_3x.png"
+magick "$SRC_FILE_SQUARE" -resize 58x58 "$DST_PATH/iphone_29x29_2x.png"
+magick "$SRC_FILE_SQUARE" -resize 87x87 "$DST_PATH/iphone_29x29_3x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x90 "$DST_PATH/temp1.png"
-convert "$DST_PATH/temp1.png"  -gravity Center -crop 120x90+0+0 "$DST_PATH/iphone_60x45_2x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 120x90^ "$DST_PATH/temp1.png"
+magick "$DST_PATH/temp1.png"  -gravity Center -crop 120x90+0+0 "$DST_PATH/iphone_60x45_2x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x135 "$DST_PATH/temp2.png"
-convert "$DST_PATH/temp2.png"  -gravity Center -crop 180x135+0+0 "$DST_PATH/iphone_60x45_3x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 180x135^ "$DST_PATH/temp2.png"
+magick "$DST_PATH/temp2.png"  -gravity Center -crop 180x135+0+0 "$DST_PATH/iphone_60x45_3x.png"
 
-convert "$SRC_FILE_SQUARE" -resize 58x58 "$DST_PATH/ipad_29x29_2x.png"
+magick "$SRC_FILE_SQUARE" -resize 58x58 "$DST_PATH/ipad_29x29_2x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x100 "$DST_PATH/temp3.png"
-convert "$DST_PATH/temp3.png"  -gravity Center -crop 134x100+0+0 "$DST_PATH/ipad_67x50_2x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 134x100^ "$DST_PATH/temp3.png"
+magick "$DST_PATH/temp3.png"  -gravity Center -crop 134x100+0+0 "$DST_PATH/ipad_67x50_2x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x110 "$DST_PATH/temp4.png"
-convert "$DST_PATH/temp4.png"  -gravity Center -crop 148x110+0+0 "$DST_PATH/ipad_74x55_2x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 148x110^ "$DST_PATH/temp4.png"
+magick "$DST_PATH/temp4.png"  -gravity Center -crop 148x110+0+0 "$DST_PATH/ipad_74x55_2x.png"
 
-convert "$SRC_FILE_SQUARE" -resize 1024x1024 "$DST_PATH/ios-marketing_1024x1024_1x.png"
+magick "$SRC_FILE_SQUARE" -resize 1024x1024 "$DST_PATH/ios-marketing_1024x1024_1x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x40 "$DST_PATH/temp5.png"
-convert "$DST_PATH/temp5.png" -gravity Center -crop 54x40+0+0 "$DST_PATH/universal_27x20_2x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 54x40^ "$DST_PATH/temp5.png"
+magick "$DST_PATH/temp5.png" -gravity Center -crop 54x40+0+0 "$DST_PATH/universal_27x20_2x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x60 "$DST_PATH/temp6.png"
-convert "$DST_PATH/temp6.png"  -gravity Center -crop 81x60+0+0 "$DST_PATH/universal_27x20_3x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 81x60^ "$DST_PATH/temp6.png"
+magick "$DST_PATH/temp6.png"  -gravity Center -crop 81x60+0+0 "$DST_PATH/universal_27x20_3x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x48 "$DST_PATH/temp7.png"
-convert "$DST_PATH/temp7.png"  -gravity Center -crop 64x48+0+0 "$DST_PATH/universal_32x24_2x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 64x48^ "$DST_PATH/temp7.png"
+magick "$DST_PATH/temp7.png"  -gravity Center -crop 64x48+0+0 "$DST_PATH/universal_32x24_2x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x72 "$DST_PATH/temp8.png"
-convert "$DST_PATH/temp8.png"  -gravity Center -crop 96x72+0+0 "$DST_PATH/universal_32x24_3x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 96x72^ "$DST_PATH/temp8.png"
+magick "$DST_PATH/temp8.png"  -gravity Center -crop 96x72+0+0 "$DST_PATH/universal_32x24_3x.png"
 
-convert "$SRC_FILE_RECTANGLE" -resize x768 "$DST_PATH/temp9.png"
-convert "$DST_PATH/temp9.png"  -gravity Center -crop 1024x768+0+0 "$DST_PATH/ios-marketing_1024x768_1x.png"
+magick "$SRC_FILE_RECTANGLE" -resize 1024x768^ "$DST_PATH/temp9.png"
+magick "$DST_PATH/temp9.png"  -gravity Center -crop 1024x768+0+0 "$DST_PATH/ios-marketing_1024x768_1x.png"
 
 
 
